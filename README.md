@@ -67,6 +67,9 @@ Or you can use **OperationBd**.
 ```
 
 ## Worker
+Worker is a special class to ease handling of isolates without killing them continuously.
+An isolate takes around 5ms to spawn. Doing so continuously won't be any good.
+Worker gives you an ability to spawn isolates with cancelable tasks, so you don't need to kill them.
 
 First we create a worker
 
@@ -85,7 +88,7 @@ OperationBd<Uint8List> work(int count, RandomAccessFile file) =>
       /*
         Some intense work
       */
-      return file.read(count);
+      return %result%;
     }));
 ```
 
